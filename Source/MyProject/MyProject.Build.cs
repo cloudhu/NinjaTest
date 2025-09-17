@@ -18,7 +18,8 @@ public class MyProject : ModuleRules
 			"StateTreeModule",
 			"GameplayStateTreeModule",
 			"UMG",
-			"Slate"
+			"Slate",
+			"NinjaInventory"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {     
@@ -28,7 +29,7 @@ public class MyProject : ModuleRules
 			"NinjaGAS",
 			"NinjaCombat", 
 			"NinjaFactions", 
-			"NinjaCombatFactions"
+			"NinjaCombatFactions", "NinjaInventoryEquipment", 
 		});
 
 		PublicIncludePaths.AddRange(new string[] {

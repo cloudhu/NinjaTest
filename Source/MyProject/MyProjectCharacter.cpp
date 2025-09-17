@@ -16,6 +16,8 @@
 #include "Components/ArrowComponent.h"
 #include "Components/NinjaCombatCharacterMovementComponent.h"
 
+#include "NinjaInventoryEquipment/Public/Components/NinjaEquipmentManagerComponent.h"
+
 AMyProjectCharacter::AMyProjectCharacter(const FObjectInitializer& ObjectInitializer):Super(ObjectInitializer.SetDefaultSubobjectClass<UNinjaCombatCharacterMovementComponent>(CharacterMovementComponentName))
 {
 	// Set size for collision capsule
@@ -62,6 +64,8 @@ AMyProjectCharacter::AMyProjectCharacter(const FObjectInitializer& ObjectInitial
 	ForwardReference->SetWorldRotation(FRotator::ZeroRotator);
 	ForwardReference->SetArrowColor(FLinearColor::Green);
 	ForwardReference->SetupAttachment(GetRootComponent());
+
+	EquipmentManager = CreateDefaultSubobject<UNinjaEquipmentManagerComponent>(TEXT("EquipmentManager"));
 }
 
 UNinjaCombatManagerComponent* AMyProjectCharacter::GetCombatManager_Implementation() const
@@ -82,6 +86,11 @@ USkeletalMeshComponent* AMyProjectCharacter::GetCombatMesh_Implementation() cons
 UAnimInstance* AMyProjectCharacter::GetCombatAnimInstance_Implementation() const
 {
 	return GetMesh()->GetAnimInstance();
+}
+
+UNinjaEquipmentManagerComponent* AMyProjectCharacter::GetEquipmentManager_Implementation() const
+{
+	return EquipmentManager;
 }
 
 void AMyProjectCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

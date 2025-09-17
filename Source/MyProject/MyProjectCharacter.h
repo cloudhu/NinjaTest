@@ -6,10 +6,12 @@
 #include "GameFramework/NinjaGASPlayerCharacter.h"
 
 #include "Interfaces/CombatSystemInterface.h"
+#include "Interfaces/EquipmentSystemInterface.h"
 
 #include "Logging/LogMacros.h"
 #include "MyProjectCharacter.generated.h"
 
+class UNinjaEquipmentManagerComponent;
 class UNinjaCombatManagerComponent;
 class USpringArmComponent;
 class UCameraComponent;
@@ -23,7 +25,7 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
  *  Implements a controllable orbiting camera
  */
 UCLASS(abstract)
-class AMyProjectCharacter : public ANinjaGASPlayerCharacter, public ICombatSystemInterface
+class AMyProjectCharacter : public ANinjaGASPlayerCharacter, public ICombatSystemInterface, public IEquipmentSystemInterface
 {
 	GENERATED_BODY()
 
@@ -65,6 +67,10 @@ public:
 	virtual USkeletalMeshComponent* GetCombatMesh_Implementation() const override;
 	virtual UAnimInstance* GetCombatAnimInstance_Implementation() const override;
 	// -- End CombatSystem implementation
+
+	// -- Begin EquipmentSystem implementation
+	virtual UNinjaEquipmentManagerComponent* GetEquipmentManager_Implementation() const override;
+	// -- End EquipmentSystem implementation
 
 protected:
 
@@ -114,5 +120,10 @@ private:
 	/** Forward Reference (Input and Combat integration). */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UArrowComponent> ForwardReference;
+
+	/** Equipment Manager component. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UNinjaEquipmentManagerComponent> EquipmentManager;
+	
 };
 
