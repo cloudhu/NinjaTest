@@ -8,7 +8,8 @@ public class MyProject : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] {
+		PublicDependencyModuleNames.AddRange(new string[]
+		{
 			"Core",
 			"CoreUObject",
 			"Engine",
@@ -19,20 +20,31 @@ public class MyProject : ModuleRules
 			"GameplayStateTreeModule",
 			"UMG",
 			"Slate",
-			"NinjaInventory"
+			"NinjaInventory",
+			"GameplayAbilities",
+			"GameplayBehaviorsModule",
+			"GameplayBehaviorSmartObjectsModule",
+			"GameplayTags",
+			"GameplayTasks",
+			"ModelViewViewModel",
+			"NinjaInteraction",
+			"NinjaInteractionUI",
+			"SmartObjectsModule",
 		});
 
-		PrivateDependencyModuleNames.AddRange(new string[] {     
+		PrivateDependencyModuleNames.AddRange(new string[]
+		{
 			"GameplayAbilities",
 			"GameplayTags",
 			"GameplayTasks",
 			"NinjaGAS",
-			"NinjaCombat", 
-			"NinjaFactions", 
-			"NinjaCombatFactions", "NinjaInventoryEquipment", 
+			"NinjaCombat",
+			"NinjaFactions",
+			"NinjaCombatFactions", "NinjaInventoryEquipment",
 		});
 
-		PublicIncludePaths.AddRange(new string[] {
+		PublicIncludePaths.AddRange(new string[]
+		{
 			"MyProject",
 			"MyProject/Variant_Platforming",
 			"MyProject/Variant_Platforming/Animation",

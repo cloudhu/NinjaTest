@@ -32,11 +32,6 @@
 			"Enabled": true
 		},
 		{
-			"Name": "BlueprintAssist",
-			"Enabled": true,
-			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/9e895371fa3a471c87337860d6f341ff"
-		},
-		{
 			"Name": "NinjaFactions",
 			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/Fab/product/bda9ddb0-0067-493f-9923-052a2fe1db5d"
@@ -57,11 +52,24 @@
 			"MarketplaceURL": "com.epicgames.launcher://ue/Fab/product/fd2c3e96-f352-4dc2-80fa-ad63f12c1cee"
 		},
 		{
-			"Name": "ModelViewViewModelPreview",
+			"Name": "NinjaInteraction",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/022e2995df0b4cb3af0bf170cbeea776"
+		},
+		{
+			"Name": "GameplayBehaviors",
 			"Enabled": true
 		},
 		{
-			"Name": "SlateModelViewViewModel",
+			"Name": "GameplayAbilities",
+			"Enabled": true
+		},
+		{
+			"Name": "ModelViewViewModel",
+			"Enabled": true
+		},
+		{
+			"Name": "SmartObjects",
 			"Enabled": true
 		}
 	]
