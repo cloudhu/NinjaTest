@@ -61,3 +61,12 @@ namespace LocomotionTags
 	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(MotionMatching_Stops);
 	
 }
+
+namespace InteractionTags
+{
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Interaction_Trait_Open);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Interaction_Trait_Close);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Interaction_Trait_Hold);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Interaction_Trait_Use);
+	
+}

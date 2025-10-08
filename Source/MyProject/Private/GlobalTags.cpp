@@ -62,3 +62,12 @@ namespace LocomotionTags
 	UE_DEFINE_GAMEPLAY_TAG(MotionMatching_Stops,"MotionMatching.Stops");
 	
 }
+
+namespace InteractionTags
+{
+	UE_DEFINE_GAMEPLAY_TAG(Interaction_Trait_Open,"Interaction.Trait.Open");
+	UE_DEFINE_GAMEPLAY_TAG(Interaction_Trait_Close,"Interaction.Trait.Close");
+	UE_DEFINE_GAMEPLAY_TAG(Interaction_Trait_Hold,"Interaction.Trait.Hold");
+	UE_DEFINE_GAMEPLAY_TAG(Interaction_Trait_Use,"Interaction.Trait.Use");
+	
+}

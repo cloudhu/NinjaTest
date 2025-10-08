@@ -7,16 +7,22 @@
 
 #include "Interfaces/CombatSystemInterface.h"
 #include "Interfaces/EquipmentSystemInterface.h"
+#include "Interfaces/FactionMemberInterface.h"
+#include "Interfaces/InputSetupProviderInterface.h"
 
 #include "Logging/LogMacros.h"
 #include "MyProjectCharacter.generated.h"
 
+class UNinjaInputSetupDataAsset;
+class UNinjaCombatMotionWarpingComponent;
+class UNinjaInteractionManagerComponent;
+class UNinjaCombatComboManagerComponent;
+class UNinjaFactionComponent;
+class UNinjaCombatEquipmentAdapterComponent;
 class UNinjaEquipmentManagerComponent;
 class UNinjaCombatManagerComponent;
 class USpringArmComponent;
 class UCameraComponent;
-class UInputAction;
-struct FInputActionValue;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
@@ -25,7 +31,8 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
  *  Implements a controllable orbiting camera
  */
 UCLASS(abstract)
-class AMyProjectCharacter : public ANinjaGASPlayerCharacter, public ICombatSystemInterface, public IEquipmentSystemInterface
+class AMyProjectCharacter : public ANinjaGASPlayerCharacter, public ICombatSystemInterface, public IInputSetupProviderInterface,
+												public IEquipmentSystemInterface, public IFactionMemberInterface
 {
 	GENERATED_BODY()
 
@@ -36,82 +43,6 @@ class AMyProjectCharacter : public ANinjaGASPlayerCharacter, public ICombatSyste
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FollowCamera;
-	
-protected:
-
-	/** Jump Input Action */
-	UPROPERTY(EditAnywhere, Category="Input")
-	UInputAction* JumpAction;
-
-	/** Move Input Action */
-	UPROPERTY(EditAnywhere, Category="Input")
-	UInputAction* MoveAction;
-
-	/** Look Input Action */
-	UPROPERTY(EditAnywhere, Category="Input")
-	UInputAction* LookAction;
-
-	/** Mouse Look Input Action */
-	UPROPERTY(EditAnywhere, Category="Input")
-	UInputAction* MouseLookAction;
-
-public:
-
-	/** Constructor */
-	AMyProjectCharacter(const FObjectInitializer& ObjectInitializer);
-
-
-	// -- Begin CombatSystem implementation
-	virtual UNinjaCombatManagerComponent* GetCombatManager_Implementation() const override;
-	virtual USceneComponent* GetCombatForwardReference_Implementation() const override;
-	virtual USkeletalMeshComponent* GetCombatMesh_Implementation() const override;
-	virtual UAnimInstance* GetCombatAnimInstance_Implementation() const override;
-	// -- End CombatSystem implementation
-
-	// -- Begin EquipmentSystem implementation
-	virtual UNinjaEquipmentManagerComponent* GetEquipmentManager_Implementation() const override;
-	// -- End EquipmentSystem implementation
-
-protected:
-
-	/** Initialize input action bindings */
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-protected:
-
-	/** Called for movement input */
-	void Move(const FInputActionValue& Value);
-
-	/** Called for looking input */
-	void Look(const FInputActionValue& Value);
-
-public:
-
-	/** Handles move inputs from either controls or UI interfaces */
-	UFUNCTION(BlueprintCallable, Category="Input")
-	virtual void DoMove(float Right, float Forward);
-
-	/** Handles look inputs from either controls or UI interfaces */
-	UFUNCTION(BlueprintCallable, Category="Input")
-	virtual void DoLook(float Yaw, float Pitch);
-
-	/** Handles jump pressed inputs from either controls or UI interfaces */
-	UFUNCTION(BlueprintCallable, Category="Input")
-	virtual void DoJumpStart();
-
-	/** Handles jump pressed inputs from either controls or UI interfaces */
-	UFUNCTION(BlueprintCallable, Category="Input")
-	virtual void DoJumpEnd();
-
-public:
-
-	/** Returns CameraBoom subobject **/
-	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
-
-	/** Returns FollowCamera subobject **/
-	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
-
-private:
 
 	/** Combat Manager component. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
@@ -124,6 +55,61 @@ private:
 	/** Equipment Manager component. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UNinjaEquipmentManagerComponent> EquipmentManager;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UNinjaCombatEquipmentAdapterComponent> EquipmentWeaponManager;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = true))
+	TObjectPtr<UNinjaFactionComponent> FactionManager;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UNinjaCombatComboManagerComponent> ComboManager;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = true))
+	TObjectPtr<UNinjaInteractionManagerComponent > InteractionComponent;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = true))
+	TObjectPtr<UNinjaCombatMotionWarpingComponent > MotionWarpingComponent;
+
+protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input Setup")
+	TArray<UNinjaInputSetupDataAsset*> CharacterInputs;
+	
+public:
+
+	/** Constructor */
+	AMyProjectCharacter(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
+
+
+	// -- Begin CombatSystem implementation
+	virtual UNinjaCombatManagerComponent* GetCombatManager_Implementation() const override;
+	virtual USceneComponent* GetCombatForwardReference_Implementation() const override;
+	virtual USkeletalMeshComponent* GetCombatMesh_Implementation() const override;
+	virtual UAnimInstance* GetCombatAnimInstance_Implementation() const override;
+	virtual UActorComponent* GetWeaponManagerComponent_Implementation() const override;
+	virtual UActorComponent* GetComboManagerComponent_Implementation() const override;
+	virtual UActorComponent* GetMotionWarpingComponent_Implementation() const override;
+	// -- End CombatSystem implementation
+
+	// -- Begin Input Setup Provider implementation
+	virtual TArray<UNinjaInputSetupDataAsset*> GetInputSetups_Implementation() const override;
+	// -- End Input Setup Provider implementation
+
+	// -- Begin EquipmentSystem implementation
+	virtual UNinjaEquipmentManagerComponent* GetEquipmentManager_Implementation() const override;
+	// -- End EquipmentSystem implementation
+
+	// -- Begin Faction Member implementation
+	virtual UNinjaFactionComponent* GetFactionComponent_Implementation() const override;
+	// -- End Faction Member implementation
+	
+	/** Returns CameraBoom subobject **/
+	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+
+	/** Returns FollowCamera subobject **/
+	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+
 	
 };
 

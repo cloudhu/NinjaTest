@@ -8,43 +8,68 @@ public class MyProject : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[]
-		{
+		PublicDependencyModuleNames.AddRange([
 			"Core",
+			"CoreOnline",
 			"CoreUObject",
+			"ApplicationCore",
 			"Engine",
+			"PhysicsCore",
 			"InputCore",
 			"EnhancedInput",
 			"AIModule",
+			"NavigationSystem",
 			"StateTreeModule",
 			"GameplayStateTreeModule",
+			"Niagara",
 			"UMG",
-			"Slate",
-			"NinjaInventory",
+			//Ninja Foundation
+			"NinjaGAS",
+			"NinjaInput",
+			// Ninja Combat
+			"CommonUI",
 			"GameplayAbilities",
-			"GameplayBehaviorsModule",
-			"GameplayBehaviorSmartObjectsModule",
 			"GameplayTags",
 			"GameplayTasks",
 			"ModelViewViewModel",
+			"NinjaCombat",
+			"NinjaCombatCamera",
+			"NinjaCombatCore",
+			"NinjaCombatActorPool",
+			"NinjaCombatUI",
+			"NinjaCombatInventory",
+			"StructUtils",
+			"NinjaCombatFactions",
+			"TargetingSystem",
+			// Ninja Inventory
+			"NinjaInventory",
+			"NinjaInventoryCore",
+			"NinjaInventoryEquipment",
+			"CommonInput",
+			"NinjaFactions",
+			"DataRegistry",
+			"GameFeatures",			
+			"PropertyPath",
+			//Ninja Interaction
 			"NinjaInteraction",
 			"NinjaInteractionUI",
-			"SmartObjectsModule",
-		});
+			"SmartObjectsModule"
 
-		PrivateDependencyModuleNames.AddRange(new string[]
-		{
+		]);
+
+		PrivateDependencyModuleNames.AddRange([
 			"GameplayAbilities",
 			"GameplayTags",
 			"GameplayTasks",
 			"NinjaGAS",
 			"NinjaCombat",
 			"NinjaFactions",
-			"NinjaCombatFactions", "NinjaInventoryEquipment",
-		});
+			"NinjaCombatFactions",
+			"NinjaInventoryEquipment",
+			"NinjaInput"
+		]);
 
-		PublicIncludePaths.AddRange(new string[]
-		{
+		PublicIncludePaths.AddRange([
 			"MyProject",
 			"MyProject/Variant_Platforming",
 			"MyProject/Variant_Platforming/Animation",
@@ -59,7 +84,7 @@ public class MyProject : ModuleRules
 			"MyProject/Variant_SideScrolling/Gameplay",
 			"MyProject/Variant_SideScrolling/Interfaces",
 			"MyProject/Variant_SideScrolling/UI"
-		});
+		]);
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
