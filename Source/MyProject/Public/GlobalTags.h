@@ -33,6 +33,17 @@ namespace InventoryGameplayTags
 	//Inventory.Item.Equipment
 	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Inventory_Item_Type_Sword);
 	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Inventory_Item_Type_Shield);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Inventory_Item_Type_Axe);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Inventory_Item_Type_Bow);
+
+	//Inventory Ability Event
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Inventory_Event_Ability_EquipGeneric);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Inventory_Event_Ability_StoreGeneric);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Inventory_Event_Ability_DropGeneric);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Inventory_Event_Ability_ConsumeGeneric);
+
+	//Inventory UI Event
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Inventory_Event_UI_Open);
 }
 
 
@@ -68,5 +79,38 @@ namespace InteractionTags
 	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Interaction_Trait_Close);
 	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Interaction_Trait_Hold);
 	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Interaction_Trait_Use);
+	
+}
+
+namespace CombatTags
+{
+	//Primary Attack
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Attack_Primary_A);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Attack_Primary_B);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Attack_Primary_C);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Attack_Primary_D);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Attack_Primary_E);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Attack_Primary_F);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Attack_Primary_G);
+
+	//Secondary Attack
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Attack_Secondary_A);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Attack_Secondary_B);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Attack_Secondary_C);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Attack_Secondary_D);
+
+	//Combo
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Combo_Primary);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Combo_Secondary);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Combo_Evade);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Combo_Parry);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Combo_Riposte);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Combo_Cast);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Combo_Block);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Combo_Opportunity);
+
+	//Execute
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Opportunity_Execute_Back);
+	MYPROJECT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Ability_Opportunity_Execute_Front);
 	
 }

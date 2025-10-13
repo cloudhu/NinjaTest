@@ -33,7 +33,17 @@ namespace InventoryGameplayTags
 	//Inventory.Item.Equipment
 	UE_DEFINE_GAMEPLAY_TAG(Inventory_Item_Type_Sword,"Inventory.Item.Type.Sword");
 	UE_DEFINE_GAMEPLAY_TAG(Inventory_Item_Type_Shield,"Inventory.Item.Type.Shield");
+	UE_DEFINE_GAMEPLAY_TAG(Inventory_Item_Type_Axe,"Inventory.Item.Type.Axe");
+	UE_DEFINE_GAMEPLAY_TAG(Inventory_Item_Type_Bow,"Inventory.Item.Type.Bow");
+	
+	//Inventory Abilities Event
+	UE_DEFINE_GAMEPLAY_TAG(Inventory_Event_Ability_EquipGeneric,"Inventory.Event.Ability.EquipGeneric");
+	UE_DEFINE_GAMEPLAY_TAG(Inventory_Event_Ability_StoreGeneric,"Inventory.Event.Ability.StoreGeneric");
+	UE_DEFINE_GAMEPLAY_TAG(Inventory_Event_Ability_DropGeneric,"Inventory.Event.Ability.DropGeneric");
+	UE_DEFINE_GAMEPLAY_TAG(Inventory_Event_Ability_ConsumeGeneric,"Inventory.Event.Ability.ConsumeGeneric");
 
+	//Inventory UI Event
+	UE_DEFINE_GAMEPLAY_TAG(Inventory_Event_UI_Open,"Inventory.Event.UI.Open");
 	
 }
 
@@ -69,5 +79,35 @@ namespace InteractionTags
 	UE_DEFINE_GAMEPLAY_TAG(Interaction_Trait_Close,"Interaction.Trait.Close");
 	UE_DEFINE_GAMEPLAY_TAG(Interaction_Trait_Hold,"Interaction.Trait.Hold");
 	UE_DEFINE_GAMEPLAY_TAG(Interaction_Trait_Use,"Interaction.Trait.Use");
+	
+}
+
+namespace CombatTags
+{
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Attack_Primary_A,"Combat.Ability.Attack.Primary.A");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Attack_Primary_B,"Combat.Ability.Attack.Primary.B");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Attack_Primary_C,"Combat.Ability.Attack.Primary.C");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Attack_Primary_D,"Combat.Ability.Attack.Primary.D");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Attack_Primary_E,"Combat.Ability.Attack.Primary.E");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Attack_Primary_F,"Combat.Ability.Attack.Primary.F");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Attack_Primary_G,"Combat.Ability.Attack.Primary.G");
+	
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Attack_Secondary_A,"Combat.Ability.Attack.Secondary.A");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Attack_Secondary_B,"Combat.Ability.Attack.Secondary.B");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Attack_Secondary_C,"Combat.Ability.Attack.Secondary.C");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Attack_Secondary_D,"Combat.Ability.Attack.Secondary.D");
+	
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Combo_Primary,"Combat.Ability.Combo.Primary");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Combo_Evade,"Combat.Ability.Combo.Evade");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Combo_Parry,"Combat.Ability.Combo.Parry");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Combo_Riposte,"Combat.Ability.Combo.Riposte");
+	
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Combo_Secondary,"Combat.Ability.Combo.Secondary");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Combo_Cast,"Combat.Ability.Combo.Cast");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Combo_Block,"Combat.Ability.Combo.Block");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Combo_Opportunity,"Combat.Ability.Combo.Opportunity");
+	
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Opportunity_Execute_Back,"Combat.Ability.Opportunity.Execute.Back");
+	UE_DEFINE_GAMEPLAY_TAG(Combat_Ability_Opportunity_Execute_Front,"Combat.Ability.Opportunity.Execute.Front");
 	
 }
